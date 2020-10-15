@@ -15,6 +15,8 @@ app.put('/todo', function(req, res) {
     const title = body.title;
 
     const newTodo = createTodo(title);
+    saveTodos();
+
     res.send(newTodo);
 });
 
@@ -49,7 +51,10 @@ function createTodo(title) {
 }
 
 function saveTodos() {
+    const todosStr = JSON.stringify(todos);
 
+    fs.writeFileSync('./todos.json', todosStr);
+    console.log('Saved all Todos successfully!');
 }
 
 function loadTodos() {
@@ -60,4 +65,6 @@ function loadTodos() {
     for (const loaded of loadedTodos) {
         todos.push(loaded);
     }
+
+    console.log(`Loaded ${todos.length} Todos!`);
 }

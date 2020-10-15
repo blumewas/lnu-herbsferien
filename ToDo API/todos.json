@@ -1,11 +1,1 @@
-[{
-        "title": "ToDo 1",
-        "checked": false,
-        "date": "15.10.2020"
-    },
-    {
-        "title": "ToDo 2",
-        "checked": true,
-        "date": "15.10.2020"
-    }
-]
+[{"title":"ToDo 1","checked":false,"date":"15.10.2020"},{"title":"ToDo 2","checked":true,"date":"15.10.2020"},{"title":"test","checked":false,"date":"2020-10-15T11:16:22.170Z"},{"title":"test2","checked":false,"date":"2020-10-15T11:18:16.680Z"}]
