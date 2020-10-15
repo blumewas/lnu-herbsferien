@@ -18,7 +18,12 @@ app.use(express.static('public'));
 
 // CREATE
 app.put('/todo', function(req, res) {
-    res.send('Hallo Welt!')
+    const body = req.body;
+
+    const title = body.title;
+
+    const newTodo = createTodo(title);
+    res.send(newTodo);
 });
 
 // READ
@@ -39,3 +44,13 @@ app.delete('/todo', function(req, res) {
 app.listen(PORT, function() {
     console.log(`App wurde gestartet und läuft auf http://localhost:${PORT}`);
 });
+
+function createTodo(title) {
+    const newTodo = {
+        title: title,
+        checked: false,
+        date: new Date()
+    }
+    todos.push(newTodo);
+    return newTodo;
+}
