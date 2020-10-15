@@ -1,18 +1,9 @@
+const fs = require('fs');
 const express = require('express');
 const app = express();
 
 const PORT = 3000;
-const todos = [{
-        title: 'ToDo 1',
-        checked: false,
-        date: new Date(),
-    },
-    {
-        title: 'ToDo 2',
-        checked: true,
-        date: new Date(),
-    }
-];
+const todos = [];
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -43,6 +34,7 @@ app.delete('/todo', function(req, res) {
 });
 
 app.listen(PORT, function() {
+    loadTodos();
     console.log(`App wurde gestartet und läuft auf http://localhost:${PORT}`);
 });
 
@@ -54,4 +46,18 @@ function createTodo(title) {
     }
     todos.push(newTodo);
     return newTodo;
+}
+
+function saveTodos() {
+
+}
+
+function loadTodos() {
+    const content = fs.readFileSync('./todos.json');
+
+    const loadedTodos = JSON.parse(content.toString());
+
+    for (const loaded of loadedTodos) {
+        todos.push(loaded);
+    }
 }

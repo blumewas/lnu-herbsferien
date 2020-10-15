@@ -1,0 +1,11 @@
+[{
+        "title": "ToDo 1",
+        "checked": false,
+        "date": "15.10.2020"
+    },
+    {
+        "title": "ToDo 2",
+        "checked": true,
+        "date": "15.10.2020"
+    }
+]
