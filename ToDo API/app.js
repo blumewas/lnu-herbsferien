@@ -26,8 +26,14 @@ app.get('/todo', function(req, res) {
 });
 
 // UPDATE
-app.post('/todo', function(req, res) {
-    res.send('Hallo Welt!')
+app.post('/todo/:id', function(req, res) {
+    const id = req.params.id;
+
+    const todo = todos.find(elem => id === elem.id);
+    todo.checked = !todo.checked;
+
+    saveTodos();
+    res.send(todo);
 });
 
 // DELETE
@@ -42,6 +48,7 @@ app.listen(PORT, function() {
 
 function createTodo(title) {
     const newTodo = {
+        id: todos.length + 1,
         title: title,
         checked: false,
         date: new Date()
